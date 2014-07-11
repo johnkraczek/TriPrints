@@ -1,45 +1,58 @@
 use <tube.scad>
 module tail(){
-in = 25.4;
+	in = 25.4;
 
 
-length = 40;
-pW =0.3;
+	length = 40;
 
-outWidth =  12;
-inWidth = 10;
+	tubeInWidth = 11;
+	tubeWall = 4;
+	tubeOutWidth = tubeInWidth+2*tubeWall ;
+	
+	boltHousingRadius = 4;
+	boltHousingTube = tubeOutWidth+1;
+	boltHousingScale = 1.3;
+	housingDistance = 4;
+	
+	boltRadius = 2;
+	boltVirtOffset	= 15;
+	boltOffsetWidth	= 8;
+	boltOffsetLength = tubeOutWidth/2;
+	boltScale = 2;
+	boltDistance = 5;
 
 
-boltOffset	= 15;
-boltWidth	= 8;
-boltDepth	= 6;
-boltOutR = 4;
-boltInR = 2;
+	difference(){
+		union(){
+			tube(length,tubeOutWidth,3,0); // outer
 
+			intersection(){
+				tube(length+4,boltHousingTube,4,0); // Bolt Cutter
+				union(){
+					translate([boltOffsetWidth,boltOffsetLength,length/2-boltVirtOffset]) rotate([90,0,0]) bolt(boltHousingRadius,tubeOutWidth-1,boltHousingScale,housingDistance);
+					translate([-1*boltOffsetWidth,boltOffsetLength,length/2-boltVirtOffset]) rotate([90,180,0]) bolt(boltHousingRadius,tubeOutWidth-1,boltHousingScale,housingDistance);
+					translate([boltOffsetWidth,boltOffsetLength,length/2+boltVirtOffset]) rotate([90,0,0]) bolt(boltHousingRadius,tubeOutWidth-1,boltHousingScale,housingDistance);
+					translate([-1*boltOffsetWidth,boltOffsetLength,length/2+boltVirtOffset]) rotate([90,180,0]) bolt(boltHousingRadius,tubeOutWidth-1,boltHousingScale,housingDistance);
+				}
+			}
+		}
+		translate([boltOffsetWidth,boltOffsetLength+.5,length/2-boltVirtOffset]) rotate([90,0,0]) bolt(boltRadius,tubeOutWidth,boltScale,boltDistance);
+		translate([-1*boltOffsetWidth,boltOffsetLength+.5,length/2-boltVirtOffset]) rotate([90,180,0]) bolt(boltRadius,tubeOutWidth,boltScale,boltDistance);
+		translate([boltOffsetWidth,boltOffsetLength+.5,length/2+boltVirtOffset]) rotate([90,0,0]) bolt(boltRadius,tubeOutWidth,boltScale,boltDistance);
+		translate([-1*boltOffsetWidth,boltOffsetLength+.5,length/2+boltVirtOffset]) rotate([90,180,0]) bolt(boltRadius,tubeOutWidth,boltScale,boltDistance);
+		translate([0,0,length/2]) rotate([90,30,0]) cylinder(r=7/2+.2, h=tubeOutWidth, $fn=6);
 
-difference(){
-union(){
-tube(length,13.5,3,0); // outer
-
-intersection(){
-tube(length+4,16,4,0); // Bolt Cutter
-union(){
-translate([boltWidth,boltDepth,length/2-boltOffset]) rotate([90,0,0]) cylinder(r=boltOutR,h=outWidth,$fn=30);
-translate([-1*boltWidth,boltDepth,length/2-boltOffset]) rotate([90,0,0]) cylinder(r=boltOutR,h=outWidth,$fn=30);
-translate([boltWidth,boltDepth,length/2+boltOffset]) rotate([90,0,0]) cylinder(r=boltOutR,h=outWidth,$fn=30);
-translate([-1*boltWidth,boltDepth,length/2+boltOffset]) rotate([90,0,0]) cylinder(r=boltOutR,h=outWidth,$fn=30);
+		translate([0,0,-.5])tube(length+2,tubeInWidth,2,0); // inner tube
+	}
 }
-}
-}
-translate([boltWidth,boltDepth+.5,length/2-boltOffset]) rotate([90,0,0]) cylinder(r=boltInR,h=outWidth+1,$fn=30);
-translate([-1*boltWidth,boltDepth+.5,length/2-boltOffset]) rotate([90,0,0]) cylinder(r=boltInR,h=outWidth+1,$fn=30);
-translate([boltWidth,boltDepth+.5,length/2+boltOffset]) rotate([90,0,0]) cylinder(r=boltInR,h=outWidth+1,$fn=30);
-translate([-1*boltWidth,boltDepth+.5,length/2+boltOffset]) rotate([90,0,0]) cylinder(r=boltInR,h=outWidth+1,$fn=30);
-translate([0,0,length/2]) rotate([90,30,0]) cylinder(r=7/2+.2, h=outWidth, $fn=6);
 
-translate([0,0,-.5])tube(length+2,10.5,2,0); // inner tube
+module bolt(radius,height,scale,distance){
+	hull(){
+		cylinder(r=radius,h=height+1,$fn=30);
+		translate([distance,0,0])cylinder(r=radius*scale,h=height+1,$fn=30);
+	}
 }
 
-//translate([-8,6,5])rotate([90,0,0]) cube([16,30,10]);
-}
 tail();
+
+

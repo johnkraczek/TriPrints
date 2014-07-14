@@ -11,13 +11,13 @@ module tube(height, width, fillet, hole){
 			cylinder(h=height+2,r=hole); 
 		}
 	} else {
-	translate([fillet-width/2,fillet-width/2,0]){
-		minkowski(){
-			cube([width-fillet*2,width-fillet*2,height]);
-			cylinder(r=fillet,h=1);
+		translate([fillet-width/2,fillet-width/2,0]){
+			minkowski(){
+				cube([width-fillet*2,width-fillet*2,height]);
+				cylinder(r=fillet,h=1);
+			}
 		}
 	}
-}
 }
 module tail(){
 	in = 25.4;
@@ -25,7 +25,7 @@ module tail(){
 
 	length = 40;
 
-	tubeInWidth = 11;
+	tubeInWidth = 11.5;
 	tubeWall = 2.8;
 	tubeOutWidth = tubeInWidth+2*tubeWall ;
 	
@@ -40,6 +40,7 @@ module tail(){
 	boltOffsetLength = tubeOutWidth/2;
 	boltScale = 2;
 	boltDistance = 5;
+	boltHead = 8.5;
 
 
 	difference(){
@@ -60,9 +61,9 @@ module tail(){
 		translate([-1*boltOffsetWidth,boltOffsetLength+.5,length/2-boltVirtOffset]) rotate([90,180,0]) bolt(boltRadius,tubeOutWidth,boltScale,boltDistance);
 		translate([boltOffsetWidth,boltOffsetLength+.5,length/2+boltVirtOffset]) rotate([90,0,0]) bolt(boltRadius,tubeOutWidth,boltScale,boltDistance);
 		translate([-1*boltOffsetWidth,boltOffsetLength+.5,length/2+boltVirtOffset]) rotate([90,180,0]) bolt(boltRadius,tubeOutWidth,boltScale,boltDistance);
-		translate([0,0,length/2]) rotate([90,30,0]) cylinder(r=7/2+.2, h=tubeOutWidth, $fn=6);
+		translate([0,0,length/2]) rotate([90,30,0]) cylinder(r=boltHead/2, h=tubeOutWidth, $fn=6);
 
-		translate([0,0,-.5])tube(length+2,tubeInWidth,2,0); // inner tube
+		translate([0,0,length/2+.5])cube([tubeInWidth,tubeInWidth,length+4], center=true); // inner tube
 	}
 }
 

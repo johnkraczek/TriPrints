@@ -10,13 +10,11 @@ module tail(){
 	boltHousingScale = 1.3;
 	housingDistance = 4;
 	
-	boltRadius = 2;
 	boltVirtOffset	= 15;
 	boltOffsetWidth	= 8;
 	boltOffsetLength = tubeOutWidth/2;
 	boltScale = 2;
 	boltDistance = 5;
-	boltHead = 8.5;
 
 
 	difference(){
@@ -33,10 +31,10 @@ module tail(){
 				}
 			}
 		}
-		translate([boltOffsetWidth,boltOffsetLength+.5,length/2-boltVirtOffset]) rotate([90,0,0]) bolt(boltRadius,tubeOutWidth,boltScale,boltDistance);
-		translate([-1*boltOffsetWidth,boltOffsetLength+.5,length/2-boltVirtOffset]) rotate([90,180,0]) bolt(boltRadius,tubeOutWidth,boltScale,boltDistance);
-		translate([boltOffsetWidth,boltOffsetLength+.5,length/2+boltVirtOffset]) rotate([90,0,0]) bolt(boltRadius,tubeOutWidth,boltScale,boltDistance);
-		translate([-1*boltOffsetWidth,boltOffsetLength+.5,length/2+boltVirtOffset]) rotate([90,180,0]) bolt(boltRadius,tubeOutWidth,boltScale,boltDistance);
+		translate([boltOffsetWidth,boltOffsetLength+.5,length/2-boltVirtOffset]) rotate([90,0,0]) bolt(boltR,tubeOutWidth,boltScale,boltDistance);
+		translate([-1*boltOffsetWidth,boltOffsetLength+.5,length/2-boltVirtOffset]) rotate([90,180,0]) bolt(boltR,tubeOutWidth,boltScale,boltDistance);
+		translate([boltOffsetWidth,boltOffsetLength+.5,length/2+boltVirtOffset]) rotate([90,0,0]) bolt(boltR,tubeOutWidth,boltScale,boltDistance);
+		translate([-1*boltOffsetWidth,boltOffsetLength+.5,length/2+boltVirtOffset]) rotate([90,180,0]) bolt(boltR,tubeOutWidth,boltScale,boltDistance);
 		translate([0,0,length/2]) rotate([90,30,0]) cylinder(r=boltHead/2, h=tubeOutWidth, $fn=6);
 
 		translate([0,0,length/2+.5])cube([tubeInWidth,tubeInWidth,length+4], center=true); // inner tube

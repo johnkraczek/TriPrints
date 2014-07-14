@@ -6,9 +6,9 @@ module arm(){
 
 	length = 35;
 
-
 	tubeInWidth = 11;
-	tubeWall = 4;
+	tubeWall = 2.8;
+
 	
 	tubeOutWidth = tubeInWidth+2*tubeWall;
 

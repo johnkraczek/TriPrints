@@ -1,18 +1,13 @@
-
-use <tube.scad>
+include <Configuration.scad>;
+use <tube.scad>;
 
 module arm(){
-	in = 25.4;
 
 	length = 35;
 
-	tubeInWidth = 11.5;
-	tubeWall = 2.8;
 	boltR = 3;
 	boltHeight = 27;
 	
-	tubeOutWidth = tubeInWidth+2*tubeWall;
-
 	pegDiameter = 10;
 	height = (tubeOutWidth+1/2*in);
 

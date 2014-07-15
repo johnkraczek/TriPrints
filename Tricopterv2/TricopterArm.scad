@@ -18,7 +18,7 @@ module arm(){
 		}
 		translate([0,0,length/2+8]) cube([tubeInWidth,tubeInWidth,length+2], center=true);
 		translate([0,0,3]) cube([tubeInWidth-1.5,tubeInWidth-1.5,10], center=true);
-		translate([-tubeInWidth/2-boltR,tubeInWidth-tubeWall/2,boltpegHeight]) rotate([90,0,0]) cylinder(r=boltR, h=tubeInWidth+tubeWall*3, $fn=30);
+		translate([-tubeInWidth/2-boltR-.2,tubeInWidth-tubeWall/2,boltpegHeight]) rotate([90,0,0]) cylinder(r=boltR, h=tubeInWidth+tubeWall*3, $fn=30);
 		translate([0,0,1]) rotate([90,0,90]) scale([1,1.4,1]) cylinder(h=tubeInWidth, r=5-.5, $fn=30);
 	}
 }

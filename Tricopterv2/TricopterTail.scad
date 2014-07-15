@@ -35,7 +35,7 @@ module tail(){
 		translate([-1*boltOffsetWidth,boltOffsetLength+.5,length/2-boltVirtOffset]) rotate([90,180,0]) bolt(boltR,tubeOutWidth,boltScale,boltDistance);
 		translate([boltOffsetWidth,boltOffsetLength+.5,length/2+boltVirtOffset]) rotate([90,0,0]) bolt(boltR,tubeOutWidth,boltScale,boltDistance);
 		translate([-1*boltOffsetWidth,boltOffsetLength+.5,length/2+boltVirtOffset]) rotate([90,180,0]) bolt(boltR,tubeOutWidth,boltScale,boltDistance);
-		#translate([0,0,length/2]) rotate([90,30,0]) cylinder(r=boltHead/2-.2, h=tubeOutWidth, $fn=6);
+		translate([0,0,length/2]) rotate([90,30,0]) cylinder(r=boltHead/2-.2, h=tubeOutWidth, $fn=6);
 
 		translate([0,0,length/2+.5])cube([tubeInWidth,tubeInWidth,length+4], center=true); // inner tube
 	}

@@ -4,7 +4,6 @@ width = 40;
 depth = 13.5;
 height = tubeOutWidth;
 
-filletRad = 5;
 boltOffset = 15;
 boltOff = 8.5;
 
@@ -27,11 +26,4 @@ union(){
 
 	translate([-RCwidth/2,-RCdepth+depth-1,height-RCheight+.1])cube([RCwidth,RCdepth,RCheight]);
 	translate([-(RCwidth-4)/2,-RCdepth+depth+3,height-RCheight+2])cube([RCwidth-4,RCdepth-2,RCheight-2+.1]);
-}
-
-module fillet(){
-	difference(){
-		translate([0,0,-.5]) cube([filletRad+2,filletRad+2,height+1]);
-		translate([0,0,-1])cylinder(r=filletRad, h=height+2, $fn=60);
-	}
 }

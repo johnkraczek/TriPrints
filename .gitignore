@@ -2,6 +2,7 @@
 *.stl
 *.g
 *.gcode
+*.dxf
 
 #################
 ## Eclipse

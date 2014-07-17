@@ -6,7 +6,7 @@ module tail(){
 	length = 40;
 	
 	boltHousingRadius = 4;
-	boltHousingTube = tubeOutWidth+1;
+	boltHousingTube = tubeOutWidth;
 	boltHousingScale = 1.3;
 	housingDistance = 4;
 	
@@ -15,7 +15,6 @@ module tail(){
 	boltOffsetLength = tubeOutWidth/2;
 	boltScale = 2;
 	boltDistance = 5;
-
 
 	difference(){
 		union(){

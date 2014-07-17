@@ -15,3 +15,8 @@ module fillet(){
 	}
 }
 
+	plugWidth = 15.8;
+	plugHeight = 8.8;
+	plugDepth = 20.2;
+	wall = 1.5;
+	hole = 1.5;

@@ -3,7 +3,7 @@ include <servo.scad>
 use <Pivot.scad>
 
 padW =	16;
-padD =	85;
+padD =	78;
 padH =	4;
 
 pivotW = 12;
@@ -16,21 +16,65 @@ pivotSpaceOff = 9.6;
 pivotBarR=4/2;
 pivotStartOff = 4;
 
-servoOffset = 16.5 + pivotD;
+servoOffset =  (pivotD*2)-(1/2*pivotD)+pivotStartOff;
 
+difference(){
+union(){
 translate([0,pivotStartOff,padH])
 difference(){
-hull(){
-translate([0,0,pivotH-pivotR]) rotate([270,0,0]) cylinder(r=pivotR,h=pivotD,$fn=30);
-translate([-pivotR,0,0]) cube([pivotR*2,pivotD,1]);
+	hull(){
+		translate([0,0,pivotH-pivotR]) rotate([270,0,0]) cylinder(r=pivotR,h=pivotD,$fn=30);
+		translate([-pivotR,0,0]) cube([pivotR*2,pivotD,1]);
+	}
+	translate([-pivotR-.1,pivotSpaceOff,-.1]) cube([pivotR*2+.2,pivotSpaceD,pivotH+.1]);
+	translate([0,-.1,pivotH-pivotR]) rotate([270,0,0])cylinder(r=pivotBarR,h=pivotD+.2,$fn=20);
 }
-translate([-pivotR-.1,pivotSpaceOff,-.1]) cube([pivotR*2+.2,pivotSpaceD,pivotH+.1]);
-translate([0,-.1,pivotH-pivotR]) rotate([270,0,0])cylinder(r=pivotBarR,h=pivotD+.2,$fn=20);
+difference(){
+	translate([-padW/2,0,0])cube([padW,padD,padH]);
+	translate([0,7,-1.9]){
+		union(){
+			difference(){
+				translate([(-padW/2)-1,0,0])cube([padW+2,3,6]);
+				translate([-(padW-4)/2,-1,-2])cube([padW-4,5,6]);
+			}
+		}
+	}
+		translate([0,26.5,-1.9]){
+		union(){
+			difference(){
+				translate([(-padW/2)-1,0,0])cube([padW+2,3,6]);
+				translate([-(padW-4)/2,-1,-2])cube([padW-4,5,6]);
+			}
+		}
+	}
 }
 
-translate([-padW/2,0,0])cube([padW,padD,padH]);
-translate([-servoDriver,servoOffset,(-servoH/2)+pivotH-pivotR+padH])%servo();
 
-translate([0,-1,0])mirror([0,0,1])pivot();
+difference(){
+	translate([-padW/2-4+.5,servoOffset-2,0])cube([servoW+4,servoD+4,6]);
+	translate([-servoDriver,servoOffset,(-servoH/2)+pivotH-pivotR+padH])servo();
+}
+}
 
-//pivotSpaceD+pivotStartOff
+			translate([0,50,-1.9]){
+		union(){
+			difference(){
+				translate([(-padW/2)-1,0,0])cube([padW+2,3,6]);
+				translate([-(padW-4)/2,-1,-2])cube([padW-4,5,6]);
+			}
+		}
+	}
+	
+				translate([0,65,-1.9]){
+		union(){
+			difference(){
+				translate([(-padW/2)-1,0,0])cube([padW+2,3,6]);
+				translate([-(padW-4)/2,-1,-2])cube([padW-4,5,6]);
+			}
+		}
+	}
+
+}
+
+%translate([0,pivotSpaceD+pivotStartOff,(padH*2)+pivotH-pivotR+3.35])mirror([0,0,1])pivot();
+

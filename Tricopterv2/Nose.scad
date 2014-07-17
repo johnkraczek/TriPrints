@@ -11,14 +11,15 @@ RCwidth = 22;
 RCheight = 12.55;
 RCdepth = 44;
 
+filletR = 5;
 
 difference(){
 union(){
 	translate([-RCwidth/2+.1,-RCdepth+depth-3,0])cube([RCwidth-.2,RCdepth+2,tubeOutWidth-RCheight+2]);
 	translate([-width/2,0,0]) cube([width,depth,height]);
 	}
-	translate([width/2-filletRad,depth-filletRad,0])fillet();
-	mirror([1,0,0]) translate([width/2-filletRad,depth-filletRad,0])fillet();
+	translate([width/2-filletRad,depth-filletRad,0])fillet(filletR,height);
+	mirror([1,0,0]) translate([width/2-filletRad,depth-filletRad,0])fillet(filletR,height);
 	translate([boltOffset,0,-.5])cylinder(r=boltR, h = height+1, $fn = 20);
 	mirror([1,0,0])translate([boltOffset,0,-.5])cylinder(r=boltR, h = height+1, $fn = 20);
 	translate([-boltOffset,boltOff,height-3])rotate([0,0,30]) cylinder(r=boltHead/2,4,$fn=6);

@@ -4,7 +4,7 @@ width = 40;
 depth = 30;
 boltDepth = 13.5;
 height = 6;
-
+filletR = 5;
 
 
 boltOffset = 15;
@@ -16,8 +16,8 @@ union(){
 	translate([-width/2,0,0]) cube([width,depth,height]);
 	}
 	//fillet
-	translate([width/2-filletRad,depth-filletRad,0])fillet();
-	mirror([1,0,0]) translate([width/2-filletRad,depth-filletRad,0])fillet();
+	translate([width/2-filletRad,depth-filletRad,0])fillet(filletR,height);
+	mirror([1,0,0]) translate([width/2-filletRad,depth-filletRad,0])fillet(filletR,height);
 	//boltHoles
 	translate([boltOffset,depth-boltDepth,-.5])cylinder(r=boltR, h = height+1, $fn = 20);
 	mirror([1,0,0])translate([boltOffset,depth-boltDepth,-.5])cylinder(r=boltR, h = height+1, $fn = 20);	

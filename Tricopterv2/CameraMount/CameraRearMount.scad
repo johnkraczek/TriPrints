@@ -1,5 +1,5 @@
 
-include <Configuration.scad>
+include <..\Configuration.scad>
 
 module rear(){
 	cubew = 50;

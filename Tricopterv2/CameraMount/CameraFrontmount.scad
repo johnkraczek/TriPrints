@@ -1,4 +1,4 @@
-include <Configuration.scad>
+include <..\Configuration.scad>
 
 width = 40;
 depth = 30;
@@ -9,8 +9,7 @@ filletR = 5;
 
 boltOffset = 15;
 boltOff = 8.5;
-
-
+filletRad = 5;
 difference(){
 union(){
 	translate([-width/2,0,0]) cube([width,depth,height]);

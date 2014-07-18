@@ -1,5 +1,5 @@
 
-include <Configuration.scad>
+include <..\Configuration.scad>
 
 difference(){
 	translate([-(plugWidth+2*wall)/2,0,-plugHeight-wall])cube([plugWidth+(2*wall),plugDepth+wall,plugHeight+wall]);

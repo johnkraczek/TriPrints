@@ -10,6 +10,7 @@ filletR = 5;
 boltOffset = 15;
 boltOff = 8.5;
 filletRad = 5;
+mirror([0,0,1])
 difference(){
 union(){
 	translate([-width/2,0,0]) cube([width,depth,height]);

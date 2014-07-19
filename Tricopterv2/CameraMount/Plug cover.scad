@@ -8,3 +8,6 @@ module plugCover(){
 		translate([-(plugWidth-2*hole)/2,5,-plugHeight+hole])cube([plugWidth-(2*hole),plugDepth-hole,plugHeight-hole+.2]);
 	}
 }
+rotate([-90,0,0]){
+plugCover();
+}

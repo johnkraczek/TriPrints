@@ -14,9 +14,10 @@ pivotD = 28.85;
 pivotSpaceD = 9.7;
 pivotSpaceOff = 9.6;
 pivotBarR=4/2;
-pivotStartOff = 3;
+pivotStartOff = 2.5;
+servoOffset =  (pivotD*2)-(1/2*pivotD)+4;
 
-servoOffset =  (pivotD*2)-(1/2*pivotD)+pivotStartOff+1;
+
 mirror([1,0,0]){
 difference(){
 	union(){
@@ -67,8 +68,6 @@ difference(){
 }
 }
 
-#translate([-5,75,-1])cube([10,5,5]);
-
 module zipCut(){
 			difference(){
 				translate([-servoW/2-2,0,-2])cube([servoW+4.1,3,6.2]);
@@ -78,7 +77,7 @@ module zipCut(){
 			
 module zipBoomCut(){
 boomW=13;
-			#difference(){
+			difference(){
 				translate([(-boomW/2)-1,0,0])cube([boomW+2,3,6]);
 				translate([-(boomW-4)/2,-1,-1])cube([boomW-4,5,6]);
 			}
@@ -100,5 +99,6 @@ module arch() {
 
 
 %translate([0,pivotSpaceD+pivotStartOff,(padH*2)+pivotH-pivotR+3.35])mirror([0,0,1])pivot();
-
-//%translate([-servoDriver,servoOffset,(-servoH/2)+pivotH-pivotR+padH])servo();
+mirror(1,0,1){
+%translate([-servoDriver,servoOffset,(-servoH/2)+pivotH-pivotR+padH])servo();
+}

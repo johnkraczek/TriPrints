@@ -27,16 +27,18 @@ union(){
 	mirror([1,0,0]) translate([boltOffset,depth-boltDepth,-.2])rotate([0,0,30]) cylinder(r=boltHead/2, h=3, $fn=6);
 		
 	//WireChannels
+	translate([0,0,1]){
 	translate([width/2-11,4,height/2])	difference(){
 	cube([11.5,19,4]);
 	translate([2,-.5,-0.5])cube([10,17.5,5]);
 	}
+	
 	mirror([1,0,0])	translate([width/2-11,4,height/2])
 	difference(){
 	cube([11.5,19,4]);
 	translate([2,-.5,-0.5])cube([10,17.5,5]);
 	}
-	
+	}
 	
 	}
 

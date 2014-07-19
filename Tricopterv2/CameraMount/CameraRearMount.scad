@@ -12,12 +12,17 @@ module rear(){
 	boltWidth = 8;
 	boltHeight = 15;
 
+	wall = wall+.6;
+	plugHeight = plugHeight+1;
+	plugWidth= plugWidth -.3;
+	
+
 	
 	mirror([0,0,1]){
 	difference(){
 
 			translate([-cubew/2,0,0])cube([cubew,cubed,height]);
-			translate([0,-.2,.5]){
+			translate([0,-.2,1]){
 				difference(){
 					translate([-(plugWidth+2*wall)/2,0,-plugHeight-wall])cube([plugWidth+(2*wall),plugDepth+wall,plugHeight+wall]);
 					translate([-plugWidth/2,-.2,-plugHeight])cube([plugWidth,plugDepth+.2,plugHeight+.2]);
@@ -55,10 +60,11 @@ module rear(){
 		}
 		
 		//bolts
-		translate([boltWidth,boltOffset,-.5])cylinder(r=2,h=12, $fn=20);
-		translate([boltWidth,boltOffset+30,-.5])cylinder(r=2,h=12, $fn=20);
-		translate([-boltWidth,boltOffset,-.5])cylinder(r=2,h=12, $fn=20);
-		translate([-boltWidth,boltOffset+30,-.5])cylinder(r=2,h=12, $fn=20);
+		
+		translate([boltWidth,boltOffset,-.5])cylinder(r=boltR,h=12, $fn=20);
+		translate([boltWidth,boltOffset+30,-.5])cylinder(r=boltR,h=12, $fn=20);
+		translate([-boltWidth,boltOffset,-.5])cylinder(r=boltR,h=12, $fn=20);
+		translate([-boltWidth,boltOffset+30,-.5])cylinder(r=boltR,h=12, $fn=20);
 		//boltHead
 		translate([boltWidth,boltOffset,-.2])rotate([0,0,30])cylinder(r=boltHead/2,h=3, $fn=6);
 		translate([boltWidth,boltOffset+30,-.2])rotate([0,0,30])cylinder(r=boltHead/2,h=3, $fn=6);

@@ -14,10 +14,10 @@ pivotD = 28.85;
 pivotSpaceD = 9.7;
 pivotSpaceOff = 9.6;
 pivotBarR=4/2;
-pivotStartOff = 4;
+pivotStartOff = 3;
 
-servoOffset =  (pivotD*2)-(1/2*pivotD)+pivotStartOff;
-
+servoOffset =  (pivotD*2)-(1/2*pivotD)+pivotStartOff+1;
+mirror([1,0,0]){
 difference(){
 	union(){
 		translate([0,pivotStartOff,padH])
@@ -43,65 +43,62 @@ difference(){
 	union(){
 		
 		translate([0,50,-1.9]){
-			difference(){
-				translate([(-padW/2)-1,0,0])cube([padW+2,3,6]);
-				translate([-(padW-4)/2,-1,-1])cube([padW-4,5,6]);
-			}
+		zipBoomCut();
 		}	
 		translate([0,74,-1.9]){
-			difference(){
-				translate([(-padW/2)-1,0,0])cube([padW+2,3,6]);
-				translate([-(padW-4)/2,-1,-1])cube([padW-4,5,6]);
-			}
+		zipBoomCut();
 		}
 		translate([-servoDriver,56.7,1.9]){
-			difference(){
-				translate([-servoW/2-2,0,-2])cube([servoW+4.1,3,6.2]);
-				translate([-servoW/2+.05,-1,-1])cube([servoW-.1,5,6]);
-			}
+		zipCut();
 		}
 		translate([-servoDriver,63.2,1.9]){
-			difference(){
-				translate([-servoW/2-2,0,-2])cube([servoW+4.1,3,6.2]);
-				translate([-servoW/2+.05,-1,-1])cube([servoW-.1,5,6]);
-			}
+		zipCut();
 		}
 		translate([-servoDriver,69.7,1.9]){
-			difference(){
-				translate([-servoW/2-2,0,-2])cube([servoW+4.1,3,6.2]);
-				translate([-servoW/2+.05,-1,-1])cube([servoW-.1,5,6]);
-			}
+		zipCut();
 		}
-		translate([0,7.8,0]){
-			difference(){
-				hull(){
-					translate([0,0,pivotH-pivotR+4]) rotate([270,0,0]) cylinder(r=pivotR+.5,h=2,$fn=30);
-					translate([-pivotR-.5,0,-.2]) cube([pivotR*2+1.2,2,1]);
-				}
-				hull(){
-					translate([0,-.1,pivotH-pivotR+3.9]) rotate([270,0,0]) cylinder(r=pivotR-1,h=2.2,$fn=30);
-					translate([-pivotR+1,-.1,-1]) cube([pivotR*2-2,2.2,1]);
-				}
-
-			}
+		translate([0,(pivotSpaceOff+pivotStartOff)/2,0]){
+			arch();
 		}
-				translate([0,27.1,0]){
-			difference(){
-				hull(){
-					translate([0,0,pivotH-pivotR+4]) rotate([270,0,0]) cylinder(r=pivotR+.5,h=2,$fn=30);
-					translate([-pivotR-.5,0,-.2]) cube([pivotR*2+1.2,2,1]);
-				}
-				hull(){
-					translate([0,-.1,pivotH-pivotR+3.9]) rotate([270,0,0]) cylinder(r=pivotR-1,h=2.2,$fn=30);
-					translate([-pivotR+1,-.1,-1]) cube([pivotR*2-2,2.2,1]);
-				}
-
-			}
+		translate([0,(pivotSpaceOff+pivotStartOff)*2+.5,0]){
+			arch();
 		}
 	}	
 }
+}
 
+#translate([-5,75,-1])cube([10,5,5]);
+
+module zipCut(){
+			difference(){
+				translate([-servoW/2-2,0,-2])cube([servoW+4.1,3,6.2]);
+				translate([-servoW/2+.05,-1,-1])cube([servoW-.1,5,6]);
+			}
+			}
+			
+module zipBoomCut(){
+boomW=13;
+			#difference(){
+				translate([(-boomW/2)-1,0,0])cube([boomW+2,3,6]);
+				translate([-(boomW-4)/2,-1,-1])cube([boomW-4,5,6]);
+			}
+}
+
+module arch() {
+	difference(){
+		hull(){
+			translate([0,0,pivotH-pivotR+4]) rotate([270,0,0]) cylinder(r=pivotR+.5,h=3,$fn=30);
+			translate([-pivotR-.5,0,-.2]) cube([pivotR*2+1.2,3,1]);
+		}
+		hull(){
+			translate([0,-.1,pivotH-pivotR+3.9]) rotate([270,0,0]) cylinder(r=pivotR-2,h=3.2,$fn=30);
+			translate([-pivotR+2,-.1,-1]) cube([pivotR*2-4,3.2,1]);
+		}
+
+	}
+}
 
 
 %translate([0,pivotSpaceD+pivotStartOff,(padH*2)+pivotH-pivotR+3.35])mirror([0,0,1])pivot();
+
 //%translate([-servoDriver,servoOffset,(-servoH/2)+pivotH-pivotR+padH])servo();

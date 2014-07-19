@@ -4,7 +4,7 @@ tubeWall = 2.8;
 tubeOutWidth = tubeInWidth+2*tubeWall;
 
 boltHead = 8.5; 
-boltR = 2;
+boltR = 2.4;
 
 module fillet(filletRad,height,rotation = 0){
 rotate([0,0,rotation])
@@ -14,7 +14,7 @@ rotate([0,0,rotation])
 	}
 }
 
-	plugWidth = 15.8;
+	plugWidth = 16.5;
 	plugHeight = 8.8;
 	plugDepth = 20.2;
 	wall = 1.5;

@@ -1,4 +1,4 @@
-include <Configuration.scad>;
+include <../Configuration.scad>;
 use <tube.scad>;
 
 module arm(){

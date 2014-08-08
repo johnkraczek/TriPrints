@@ -1,14 +1,14 @@
-include <configuration.scad>
+include <../configuration.scad>
 
 module tube(height)
 difference(){
-union(){
-cube([tubeOut,tubeOut,height]);
-scale([1,scale,1])translate([tubeOut/2,0,0])cylinder(r=tubeOut/2,h=height, $fn=60);
-}
+	union(){
+		cube([tubeOutWidth,tubeOutWidth,height]);
+		scale([1,scale,1])translate([tubeOutWidth/2,0,0])cylinder(r=tubeOutWidth/2,h=height, $fn=60);
+	}
 
-translate([wallThick,wallThick,-.5])cube([tubeW,tubeW,height+1]);
-scale([1,scale,1])translate([tubeW/2+wallThick,wallThick,-.5])cylinder(r=tubeW/2,h=height+1,$fn=60);
+	translate([tubeWall,tubeWall,-.5])cube([tubeInWidth,tubeInWidth,height+1]);
+	scale([1,scale,1])translate([tubeInWidth/2+tubeWall,tubeWall,-.5])cylinder(r=tubeInWidth/2,h=height+1,$fn=60);
 }
 
 tube(50);

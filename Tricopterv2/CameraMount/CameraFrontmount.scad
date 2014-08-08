@@ -23,8 +23,8 @@ union(){
 	mirror([1,0,0])translate([boltOffset,depth-boltDepth,-.5])cylinder(r=boltR, h = height+1, $fn = 20);	
 	
 	//boltHead
-	translate([boltOffset,depth-boltDepth,-.2])rotate([0,0,30]) cylinder(r=boltHead/2, h=3, $fn=6);
-	mirror([1,0,0]) translate([boltOffset,depth-boltDepth,-.2])rotate([0,0,30]) cylinder(r=boltHead/2, h=3, $fn=6);
+	translate([boltOffset,depth-boltDepth,-.2])rotate([0,0,30]) cylinder(r=boltHead/2, h=boltDepth, $fn=6);
+	mirror([1,0,0]) translate([boltOffset,depth-boltDepth,-.2])rotate([0,0,30]) cylinder(r=boltHead/2, h=boltDepth, $fn=6);
 		
 	//WireChannels
 	translate([0,0,1]){

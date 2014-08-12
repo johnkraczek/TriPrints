@@ -1,6 +1,6 @@
 in = 25.4;
 tubeInWidth = 10.5;
-tubeWall = 1.6;
+tubeWall = .6*2;
 tubeOutWidth = tubeInWidth+2*tubeWall;
 
 totalWidth = boltDepth+tubeInWidth+tubeWall;

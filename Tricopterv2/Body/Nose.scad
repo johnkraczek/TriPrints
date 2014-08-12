@@ -1,4 +1,4 @@
-include <Configuration.scad>;
+include <../Configuration.scad>;
 
 width = 40;
 depth = 14;

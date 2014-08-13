@@ -32,3 +32,4 @@ translate([-padW/2+filletR,filletR,0])fillet(filletR,filletH,180);
 mirror(0,1,0)translate([-padW/2+filletR,filletR,0])fillet(filletR,filletH,180);
 }
 }
+pivot();

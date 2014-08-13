@@ -3,11 +3,11 @@ tubeInWidth = 10.5;
 tubeWall = .6*2;
 tubeOutWidth = tubeInWidth+2*tubeWall;
 
-totalWidth = boltDepth+tubeInWidth+tubeWall;
-
+boltDepth = 3;
 boltHead = 8.5; 
 boltR = 2.4;
-boltDepth = 3;
+
+totalWidth = boltDepth+tubeInWidth+tubeWall;
 
 module fillet(filletRad,height,rotation = 0){
 	rotate([0,0,rotation])

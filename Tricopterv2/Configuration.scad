@@ -1,6 +1,6 @@
 in = 25.4;
-tubeInWidth = 10.5;
-tubeWall = .6*2;
+tubeInWidth = 10.3;
+tubeWall = .5*4;
 tubeOutWidth = tubeInWidth+2*tubeWall;
 
 boltDepth = 3;

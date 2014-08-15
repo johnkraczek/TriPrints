@@ -13,8 +13,9 @@ module pivotJig(){
 			translate([tubeOutWidth-tubeWall,0,0])cube([jigDepth,tubeOutWidth,15]);
 		}
 		translate([tubeWall,tubeWall,-1])cube([tubeInWidth,tubeInWidth,jigHeight+2]);
-		translate([-1,tubeOutWidth/2,pivotHoleH]) rotate([0,90,0]) cylinder(r=2,h= tubeOutWidth+5, $fn=20);
-		translate([tubeOutWidth,tubeOutWidth/2,pivotHoleH]) rotate([0,90,0]) cylinder(r=sleveD/2,h= jigDepth, $fn=20);
+		translate([-1,tubeOutWidth/2,pivotHoleH]) rotate([0,90,0])
+		#cylinder(r=boltR,h= tubeOutWidth+30, $fn=20);
+		//translate([tubeOutWidth,tubeOutWidth/2,pivotHoleH]) rotate([0,90,0]) cylinder(r=sleveD/2,h= jigDepth, $fn=20);
 	}
 	hull(){
 		tube(1);

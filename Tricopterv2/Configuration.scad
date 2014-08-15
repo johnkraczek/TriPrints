@@ -1,6 +1,6 @@
 in = 25.4;
-tubeInWidth = 10.5;
-tubeWall = .6*2;
+tubeInWidth = 10.2;
+tubeWall = .5*2;
 tubeOutWidth = tubeInWidth+2*tubeWall;
 
 boltDepth = 3;
@@ -23,7 +23,7 @@ plugDepth = 20.2;
 wall = 1.5;
 hole = 1.5;
 
-scale = .6;
+scale = 1;
 
 pivotHoleH = 7.5;
 

@@ -5,7 +5,7 @@ tubeOutWidth = tubeInWidth+2*tubeWall;
 
 boltDepth = 3;
 boltHead = 8.5; 
-boltR = 2.4;
+boltR = 2.2;
 
 totalWidth = boltDepth+tubeInWidth+tubeWall;
 
